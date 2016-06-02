@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Reserva</string>
+    <string-array name="laboratorios">
+        <item>LEC01</item>
+        <item>LEC02</item>
+        <item>LCC01</item>
+    </string-array>
+</resources>

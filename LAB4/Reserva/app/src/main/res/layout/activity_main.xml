@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="br.ufc.dc.dspm.reserva.MainActivity"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        android:orientation="vertical"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nome do professor:" />
+        <EditText
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:id="@+id/nome"
+            android:hint="Professor"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="SIPE:" />
+        <EditText
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:id="@+id/sipe"
+            android:inputType="number"
+            android:hint="SIPE"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="E-mail:" />
+        <EditText
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:id="@+id/email"
+            android:inputType="textEmailAddress"
+            android:hint="Email"/>
+        <LinearLayout
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:orientation="horizontal">
+            <Button
+                android:id="@+id/data"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:onClick="escolherData"
+                android:text="Data"/>
+            <Button
+                android:id="@+id/hora"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:onClick="escolherHora"
+                android:text="Hora"/>
+
+            <Spinner
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:id="@+id/spinnerLocal"/>
+        </LinearLayout>
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="Precisa de Datashow?"/>
+        <RadioGroup
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:id="@+id/grupo"
+            android:orientation="horizontal">
+            <RadioButton
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:id="@+id/radioSim"
+                android:text="Sim"/>
+            <RadioButton
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:id="@+id/radioNao"
+                android:text="Não"/>
+            <RadioButton
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:id="@+id/radioTalvez"
+                android:checked="true"
+                android:text="Talvez"
+                />
+        </RadioGroup>
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="Configurações desejadas:"/>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="15dp"
+            android:orientation="vertical">
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Android Studion + Android"
+                android:id="@+id/checkAndroid"/>
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Java SDK"
+                android:id="@+id/checkSdk"/>
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sistema Operacional Linux"
+                android:id="@+id/checkLinux"/>
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sistema Operacional Windows"
+                android:id="@+id/checkWindows"/>
+        </LinearLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Reserva Prioritária?"/>
+        <ToggleButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tooglePrioridade"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Observações"/>
+        <EditText
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:id="@+id/observacao"
+            android:inputType="textMultiLine"
+            android:lines="4"
+            android:hint="Observações"/>
+        <ImageButton
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:src="@drawable/images"
+            android:adjustViewBounds="true"
+            android:scaleType="fitXY"
+            android:onClick="validar"
+            />
+    </LinearLayout>
+</ScrollView>
+
