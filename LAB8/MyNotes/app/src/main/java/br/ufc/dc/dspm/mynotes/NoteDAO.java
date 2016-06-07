@@ -108,15 +108,17 @@ public class NoteDAO extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor resultado = db.rawQuery("select * from notes WHERE data BETWEEN '" + initialDate+"' AND '" + finalDate+"' ORDER BY id",null);
         if(resultado != null && resultado.getCount() > 0){
-            do{
+            resultado.moveToFirst();
+            while(!resultado.isAfterLast()){
 
                 Note note = new Note();
                 note.setId(resultado.getInt(0));
                 note.setTitle(resultado.getString(1));
                 note.setData(resultado.getString(2));
                 note.setContent(resultado.getString(3));
+                notes.add(note);
                 resultado.moveToNext() ;
-            }while(!resultado.isAfterLast());
+            }
         }
         return notes;
     }
