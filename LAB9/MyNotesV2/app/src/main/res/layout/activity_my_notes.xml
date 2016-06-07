@@ -17,7 +17,6 @@
         android:layout_alignParentRight="true"
         android:ems="10"
         android:hint="note title" >
-
         <requestFocus />
     </EditText>
 
@@ -33,49 +32,30 @@
         android:hint="note content"
         android:inputType="textMultiLine" />
 
-    <ListView
+    <TextView
         android:id="@+id/textViewNotes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/editTextContent"
         android:layout_alignRight="@+id/buttonAdd"
-        android:layout_below="@+id/filtro"
-        />
-    <EditText
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        android:layout_below="@+id/editTextContent"
-        android:id="@+id/date"
-        android:hint="data: dd/mm/aaaa"
-        />
+        android:layout_below="@+id/buttonAdd"
+        android:text="Notes" />
+
     <Button
         android:id="@+id/buttonAdd"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignRight="@+id/editTextTitle"
-        android:layout_below="@+id/date"
+        android:layout_below="@+id/editTextContent"
         android:onClick="addNote"
         android:text="Add" />
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/buttonAdd"
-        android:hint="início do filtro"
-        android:id="@+id/dataIni"/>
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:hint="fim do filtro"
-        android:layout_below="@+id/buttonAdd"
-        android:layout_alignParentRight="true"
-        android:id="@+id/dataFim"/>
-    <Button
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
-        android:id="@+id/filtro"
-        android:layout_below="@+id/dataIni"
-        android:layout_centerHorizontal="true"
-        android:text="filtrar"
-        android:onClick="filtrar"/>
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="LIST"
+        android:id="@+id/listButton"
+        android:onClick="listNotes"
+        android:layout_below="@+id/editTextContent"
+        android:layout_alignParentStart="true" />
 </RelativeLayout>

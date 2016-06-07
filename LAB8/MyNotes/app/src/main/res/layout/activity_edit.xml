@@ -7,13 +7,12 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="br.ufc.dc.dspm.mynotes.MyNotes">
-
+    tools:context="br.ufc.dc.dspm.mynotes.EditActivity">
     <EditText
-        android:id="@+id/editTextTitle"
+        android:id="@+id/TextTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/editTextContent"
+        android:layout_alignLeft="@+id/TextContent"
         android:layout_alignParentRight="true"
         android:ems="10"
         android:hint="note title" >
@@ -22,60 +21,37 @@
     </EditText>
 
     <EditText
-        android:id="@+id/editTextContent"
+        android:id="@+id/TextContent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
-        android:layout_below="@+id/editTextTitle"
+        android:layout_below="@+id/TextTitle"
         android:layout_marginTop="18dp"
         android:ems="10"
         android:hint="note content"
         android:inputType="textMultiLine" />
 
-    <ListView
-        android:id="@+id/textViewNotes"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/editTextContent"
-        android:layout_alignRight="@+id/buttonAdd"
-        android:layout_below="@+id/filtro"
-        />
+
     <EditText
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
-        android:layout_below="@+id/editTextContent"
-        android:id="@+id/date"
+        android:layout_below="@+id/TextContent"
+        android:id="@+id/editDate"
         android:hint="data: dd/mm/aaaa"
+
         />
     <Button
-        android:id="@+id/buttonAdd"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignRight="@+id/editTextTitle"
-        android:layout_below="@+id/date"
-        android:onClick="addNote"
-        android:text="Add" />
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/buttonAdd"
-        android:hint="início do filtro"
-        android:id="@+id/dataIni"/>
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:hint="fim do filtro"
-        android:layout_below="@+id/buttonAdd"
-        android:layout_alignParentRight="true"
-        android:id="@+id/dataFim"/>
+        android:text="apagar"
+        android:layout_below="@+id/editDate"
+        android:onClick="apagar"/>
     <Button
-        android:layout_height="wrap_content"
         android:layout_width="wrap_content"
-        android:id="@+id/filtro"
-        android:layout_below="@+id/dataIni"
-        android:layout_centerHorizontal="true"
-        android:text="filtrar"
-        android:onClick="filtrar"/>
-
+        android:layout_height="wrap_content"
+        android:text="atualizar"
+        android:layout_below="@+id/editDate"
+        android:layout_alignParentRight="true"
+        android:onClick="atualizar"/>
 </RelativeLayout>
