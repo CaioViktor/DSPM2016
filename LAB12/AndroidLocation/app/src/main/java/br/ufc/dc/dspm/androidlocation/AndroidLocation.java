@@ -28,6 +28,9 @@ public class AndroidLocation extends Activity implements GoogleApiClient.Connect
     private TextView addressLabel;
     private TextView locationLabel;
     private GoogleApiClient googleApiClient;
+    private Location[] enderecos;
+    private int proxEnd;
+    private TextView[] enderecosView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +38,15 @@ public class AndroidLocation extends Activity implements GoogleApiClient.Connect
         setContentView(R.layout.activity_android_location);
         this.addressLabel = (TextView) findViewById(R.id.addressTextView);
         this.locationLabel = (TextView) findViewById(R.id.locationTextView);
+
+        enderecosView = new TextView[4];
+        enderecosView[0] = (TextView) findViewById(R.id.addressTextView);
+        enderecosView[1] = (TextView) findViewById(R.id.addressTextView2);
+        enderecosView[2] = (TextView) findViewById(R.id.addressTextView3);
+        enderecosView[3] = (TextView) findViewById(R.id.addressTextView4);
+
+        enderecos = new Location[4];
+        proxEnd = 0;
 
         GoogleApiClient.Builder builder = new GoogleApiClient.Builder(this);
         builder.addApi(LocationServices.API);
@@ -69,11 +81,35 @@ public class AndroidLocation extends Activity implements GoogleApiClient.Connect
     }
 
     public void getLocation(View view) {
+
         Location location = LocationServices.FusedLocationApi.getLastLocation(googleApiClient);
-        String text = "Location = <" + location.getLatitude() + "," + location.getLongitude() + ">";
-        this.locationLabel.setText(text);
-        GetAddressTask task = new GetAddressTask(this);
-        task.execute(location);
+        if(proxEnd < enderecos.length){
+            enderecos[proxEnd] = location;
+            enderecosView[proxEnd].setText("Location = <" + location.getLatitude() + "," + location.getLongitude() + ">");
+            proxEnd++;
+
+        }else{
+            double[] dists = new double[4];
+            String distancias = "";
+            for(int i = 0; i < dists.length;i++){
+//                double dx = location.getLatitude() - enderecos[i].getLatitude() ;
+//                double dy = location.getLongitude() - enderecos[i].getLongitude();
+//                dists[i] = Math.sqrt(dx*dx + dy*dy);
+                float[] f = new float[3];
+                Location.distanceBetween(enderecos[i].getLatitude(),enderecos[i].getLongitude(),location.getLatitude(),location.getLongitude(),f);
+                dists[i] = f[0];
+                if(dists[i] < 100)
+                    Toast.makeText(this,"O individuo está dentro da área de 100 m",Toast.LENGTH_LONG).show();
+//                distancias+="P"+i+":"+dists[i]+"\n";
+            }
+//            locationLabel.setText(distancias);
+            GetAddressTask task = new GetAddressTask(this);
+            task.execute(location);
+
+
+        }
+//        String text = "Location = <" + location.getLatitude() + "," + location.getLongitude() + ">";
+//        this.locationLabel.setText(text);
     }
 
     public void doSubscribe(View view) {
@@ -124,7 +160,7 @@ public class AndroidLocation extends Activity implements GoogleApiClient.Connect
 
         @Override
         protected void onPostExecute(String address) {
-            addressLabel.setText(address);
+            locationLabel.setText(address);
         }
 
         @Override
