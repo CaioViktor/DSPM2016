@@ -13,7 +13,9 @@ import android.net.Uri;
 import android.text.TextUtils;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 /**
  * Created by Lincoln Rocha on 29/05/16.
@@ -27,6 +29,8 @@ public class NotesProvider extends ContentProvider {
     static final String ID = "id";
     static final String TITLE = "title";
     static final String CONTENT = "content";
+    static final String DATA = "data";
+
 
     private static HashMap<String, String> NOTES_PROJECTION_MAP;
 
@@ -44,10 +48,10 @@ public class NotesProvider extends ContentProvider {
 
     private SQLiteDatabase database;
     static final String DATABASE_NAME = "MyNotes.db";
-    static final int DATABASE_VERSION = 3;
+    static final int DATABASE_VERSION = 5;
     static final String NOTES_TABLE_NAME = "notes";
     static final String CREATE_DB_TABLE = "create table " + NOTES_TABLE_NAME +
-            " (id integer primary key autoincrement," +
+            " (id integer primary key autoincrement,data text," +
             " title text, content text)";
 
     @Override
